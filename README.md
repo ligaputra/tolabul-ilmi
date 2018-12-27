@@ -1,2 +1,2 @@
-# tolabul-ilmi
+# tolabulilmi
 Tempat dimana semua inspirasi beredar
