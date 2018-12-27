@@ -1,0 +1,32 @@
+ <?php
+        session_start();
+        include("dblogin.php");
+        if(!empty($_POST["kirim"])){
+        $myusername=$_POST["myusername"];
+        $mypassword=$_POST["mypassword"];
+        
+        $myusername=  stripslashes($myusername);
+        $mypassword=  stripslashes($mypassword);
+        $myusername=  mysql_real_escape_string($myusername);
+        $mypassword= mysql_real_escape_string($mypassword);
+        
+        $sql="SELECT * from member WHERE myusername='$myusername' and mypassword='$mypassword'";
+        $result1 = mysql_query($sql);
+        $data= mysql_fetch_row($result1);
+        $count=  mysql_num_rows($result1);
+        
+            
+            $id=$data[0];
+            $myusername=$data[1];
+            $mypassword=$data[2];
+        
+         
+        if($count==1){ 
+            $_SESSION["myusername"]=$myusername;
+            $_SESSION["mypassword"]=$mypassword;
+            header("location:loginsuccess.php");
+        }else{
+            echo "Salah.. Pushup !!";
+        }}
+       
+     ?>
